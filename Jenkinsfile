@@ -22,7 +22,7 @@ pipeline {
             steps {
                 echo 'Starting to build docker image'
                 script {
-                    productionImage = docker.build("${ACCOUNT_REGISTRY_PREFIX}/example-webapp:${GIT_COMMIT_HASH}")
+                    productionImage = docker.build("${ACCOUNT_REGISTRY_PREFIX}/algafood-api:${GIT_COMMIT_HASH}")
                     productionImage.push()
                     productionImage.push("${env.GIT_BRANCH}")
                 }
