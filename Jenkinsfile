@@ -21,6 +21,9 @@ pipeline {
         stage('Build Production Image') {
             steps {
                 echo 'Starting to build docker image'
+                echo '${ACCOUNT_REGISTRY_PREFIX}'
+                echo '${GIT_COMMIT_HASH}'
+                echo '${env.GIT_BRANCH}'
                 script {
                     productionImage = docker.build("${ACCOUNT_REGISTRY_PREFIX}/algafood-api:${GIT_COMMIT_HASH}")
                     productionImage.push()
